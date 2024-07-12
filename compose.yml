@@ -1,0 +1,17 @@
+services:
+  db:
+    image: bitnami/postgresql:latest
+    restart: unless-stopped
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRESQL_USERNAME: "postgres"
+      POSTGRESQL_PASSWORD: "JOURNEY_DATABASE_PASSWORD"
+      POSTGRESQL_DATABASE: "journey"
+      ALLOW_EMPTY_PASSWORD: false
+    volumes:
+      - db:/var/lib/postgresql/data
+
+volumes:
+  db:
+    driver: local
